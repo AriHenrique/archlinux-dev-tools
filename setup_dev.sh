@@ -1,19 +1,20 @@
 #!/bin/bash
 
-# Instalar notepad++
-yay -S notepadqq --noconfirm
-
 # Atualize o sistema
 sudo pacman -Syu --noconfirm
+
+# install pipx
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+
+# Instalar notepad++
+yay -S notepadqq --noconfirm
 
 # Instale as ferramentas de desenvolvimento
 sudo pacman -S base-devel --noconfirm
 
 # Instale Python, pip e ferramentas relacionadas
 sudo pacman -S python python-pip python-virtualenv --noconfirm
-
-# Instale o AWS CLI
-pip install awscli
 
 # Instale o PostgreSQL (ou outra base de dados relacional de sua escolha)
 sudo pacman -S postgresql --noconfirm
@@ -32,11 +33,9 @@ sudo pacman -S docker --noconfirm
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Instale Jupyter Notebook
-pip install jupyter
 
 # Instale as bibliotecas Python
-pip install pandas numpy scipy scikit-learn matplotlib seaborn plotly tensorflow pytorch
+pipx install requests boto3 awscli Flask jupyter poetry dbt-core pandas numpy scipy scikit-learn matplotlib seaborn plotly tensorflow pytorch
 
 # Instale Kubernetes e Helm
 sudo pacman -S kubectl helm --noconfirm
@@ -53,15 +52,8 @@ yay -S postman --noconfirm
 # Instale Insomnia
 yay -S insomnia --noconfirm
 
-# Instale iTunes (via wine, presumindo que você tenha o Wine instalado)
-yay -S wine --noconfirm
-yay -S itunes --noconfirm
-
-# Instale o DBT
-pip install dbt
-
-# Instale o Poetry
-pip install poetry
+# Instale Lutris para jogos
+yay -S lutris --noconfirm
 
 # Configure o Docker para ser executado sem sudo
 sudo usermod -aG docker $USER
